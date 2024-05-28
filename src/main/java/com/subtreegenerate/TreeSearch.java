@@ -36,7 +36,7 @@ public class TreeSearch {
 
     // Método para construir a subárvore a partir do nó encontrado
     private TreeNode buildSubTree(TreeNode targetNode) {
-        TreeNode childrenSubtree = getFullSubtree(targetNode);
+        TreeNode childrenSubtree = getChildrensSubtree(targetNode);
         // Cria a nova raiz da subárvore
         TreeNode root = new TreeNode(targetNode.id, targetNode.name);
         TreeNode current = root;
@@ -53,12 +53,12 @@ public class TreeSearch {
         return current;
     }
 
-    public TreeNode getFullSubtree(TreeNode node) {
+    public TreeNode getChildrensSubtree(TreeNode node) {
         TreeNode subtreeCopy = new TreeNode(node.id, node.name); // Cria uma cópia do nó atual
 
         // Copia recursivamente os filhos
         for (TreeNode child : node.children) {
-            subtreeCopy.addChild(getFullSubtree(child));
+            subtreeCopy.addChild(getChildrensSubtree(child));
         }
 
         return subtreeCopy;
